@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['web'])->group(function(){
+    Route::get('/', [Controller::class, 'login'])->name('login');
+    Route::post('/postlogin', [Controller::class, 'postlogin'])->name('postlogin');
+    Route::get('/logout', [Controller::class, 'logout'])->name('logout');
+});
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::middleware(['auth:web'])->group(function(){
+        Route::get('/dashboard', function(){return view('back.pages.dashboard');})->name('dashboard');
+    });
 });
