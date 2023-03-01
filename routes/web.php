@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,6 @@ Route::middleware(['web'])->group(function(){
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:web'])->group(function(){
         Route::get('/dashboard', function(){return view('back.pages.dashboard');})->name('dashboard');
+        Route::resource('project', ProjectController::class);
     });
 });

@@ -25,9 +25,9 @@
         <i class="fas fa-search"></i>
       </div>
       <div class="card-body">
-        <h4>SEO</h4>
+        <h4>Project</h4>
         <p>Search engine optimization settings, such as meta tags and social media.</p>
-        <a href="./" class="card-cta">Change Setting <i class="fas fa-chevron-right"></i></a>
+        <a href="{{ route('admin.project.index') }}" class="card-cta">Change Setting <i class="fas fa-chevron-right"></i></a>
       </div>
     </div>
   </div>
